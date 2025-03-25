@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Task;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskPriorityRequest;
 use App\Models\Task;
-use App\Service\TaskService;
-use Illuminate\Http\Request;
+use App\Service\Task\TaskService;
 
 class TaskPriorityController extends Controller
 {
@@ -19,24 +19,20 @@ class TaskPriorityController extends Controller
     public function updatePriority(TaskPriorityRequest $request, Task $task)
     {
 
-;
-        // Validate the incoming request
+        //Validate incoming request
         $validated = $request->validated();
 
-        // Update the task's priority
-       // $task->priority = $validated['priority'];
-
-
+        //Update Task Priority
         $updatedTask = $this->taskService->updateTaskPriority($task, $validated['priority']);
 
-        // Early Exit if task update fail
+        //Early Exit if task update fail
         if (! $updatedTask) {
             return response()->json([
                 'message' => 'Failed to update task priority.',
             ], 400);
         }
 
-        // Return the updated task in the response
+        //Return the updated task in the response
         return response()->json([
             'message' => 'Task priority updated successfully.',
             'task' => $updatedTask,

@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Management</title>
+    <title> Task Organiser </title>
 
-    <!-- Include Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <head>
         <!-- Include Alpine.js CDN -->
@@ -15,7 +14,7 @@
 </head>
 
 <body>
-<!-- Navbar or other top sections can go here -->
+<!-- Nav Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Task Manager</a>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -28,7 +27,7 @@
 </nav>
 
 <div class="container mt-5">
-    <!-- Content section will be injected here -->
+    <!-- contents section -->
     @yield('content')
 </div>
 

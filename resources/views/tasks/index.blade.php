@@ -2,20 +2,21 @@
 
 @section('content')
     <div class="container">
-        <h2>Task List</h2>
+        <h2>Tasks</h2>
 
-        <!-- Project Filter -->
         <div class="mb-3">
             <label for="projectFilter">Filter by Project:</label>
             <select id="projectFilter" class="form-control" x-model="selectedProject" x-on:change="fetchTasks()">
                 <option value="">All Projects</option>
+                //Loop all the projects
+                //Todo : project filter function not implemented fully
                 @foreach($projects as $project)
                     <option value="{{ $project->id }}">{{ $project->project_name }}</option>
                 @endforeach
             </select>
         </div>
 
-        <!-- Task Table -->
+        <!--Task list with table -->
         <div x-data="taskList()" x-init="init()">
             <table class="table table-bordered" id="taskTable">
                 <thead>
@@ -42,7 +43,8 @@
     <script>
         function taskList() {
             return {
-                tasks: @json($tasks),  // Initial task data (can be empty initially)
+                //Initiate task data
+                tasks: @json($tasks),
                 selectedProject: '',
                 selectedPriority: '',
 
@@ -52,11 +54,12 @@
                     });
                 },
 
-                //Todo : Fetch tasks from the backend based on the selected project ID
+                //Todo :Fetch tasks from the backend based on the selected project ID
                 fetchTasks() {
 
+                    // If no project is selected, show all tasks
                     if (!this.selectedProject) {
-                        this.tasks = @json($tasks);  // If no project is selected, show all tasks
+                        this.tasks = @json($tasks);
                         return;
                     }
 
@@ -72,7 +75,7 @@
                 get filteredTasks() {
                     let tasks = this.tasks;
 
-                    // Filter by priority (if needed)
+                    // TODO : Filter by priority
                     if (this.selectedPriority) {
                         tasks = tasks.filter(task => task.priority == this.selectedPriority);
                     }
@@ -80,8 +83,9 @@
                     return tasks;
                 },
 
-                // Update the priority of a single task
+                //Update task priority
                 updatePriority(taskId, newPriority) {
+                    //Calling to task priority end-point
                     fetch(`/api/tasks/${taskId}/update-priority`, {
                         method: 'PATCH',
                         headers: {
@@ -91,9 +95,6 @@
                         body: JSON.stringify({ priority: newPriority }) //Send only the updated priority
                     })
                         .then(response => response.json())
-                        .then(data => {
-                            console.log('Priority updated successfully:', data);
-                        })
                         .catch(error => console.error('Error updating priority:', error));
                 },
 

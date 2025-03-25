@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\Task\TaskIndexController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', \App\Http\Controllers\TaskIndexController::class);
-// Route::get('/', function () {
-//    return view('index');
-// });
+//
+Route::get('/', TaskIndexController::class);

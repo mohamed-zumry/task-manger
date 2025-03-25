@@ -20,10 +20,10 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word, // Task Name
-            'description' => $this->faker->sentence, // Task description
-            'start_date' => Carbon::now()->addDays(rand(1, 30)), // Generate a future date
-            'status' => $this->faker->randomElement(['pending', 'in_progress', 'completed']), // Task status
+            'name' => $this->faker->sentence,//Task Name
+            'description' => $this->faker->sentence,// Task description
+            'start_date' => Carbon::now()->addDays(rand(1, 30)),//Generate a future date
+            'status' => $this->faker->randomElement(['pending', 'in_progress', 'completed']),// Task status
             'project_id' => Project::factory(), // Project belongs to the task
         ];
     }

@@ -23,7 +23,7 @@ class TaskPriorityRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'priority' => 'required|integer|min:1', // Make the priority is an integer and at least 1
+            'priority' => 'required|integer|min:1', //Make the priority is an integer and at least 1
         ];
     }
 }

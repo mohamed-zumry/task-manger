@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Task;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskIndexRequest;
-use App\Service\TaskService;
-use Illuminate\Http\Request;
+use App\Service\Task\TaskService;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 
 class TaskIndexController extends Controller
 {
@@ -18,7 +21,7 @@ class TaskIndexController extends Controller
     // Display a listing of the tasks filtering by project or Status
 
     /**
-     * @return void
+     * @return Factory|View|Application|object
      */
     public function __invoke(TaskIndexRequest $request)
     {
@@ -26,13 +29,11 @@ class TaskIndexController extends Controller
         // validate filters from the request
         $validatedRequest = $request->validated();
 
-        // Get tasks with filters from the service
+        // Get Tasks with filters from the service
         $tasks = $this->taskService->getTasksWithFilters($validatedRequest);
 
         // Get all projects for the dropdown menu filter
         $projects = $this->taskService->getAllProjects();
-
-        // dd( $tasks->items());
 
         return view('tasks.index', [
             'tasks' => $tasks->items(),  // Only the tasks data, not the paginator

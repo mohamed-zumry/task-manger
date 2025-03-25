@@ -12,7 +12,7 @@ class TaskIndexRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // Todo after the implementation of user management we can enable this
+        // Todo after the implementation of user management  can enable this
         return true;
     }
 
