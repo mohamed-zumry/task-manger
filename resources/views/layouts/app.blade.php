@@ -19,9 +19,6 @@
     <a class="navbar-brand" href="#">Task Manager</a>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/tasks">Tasks</a>
-            </li>
         </ul>
     </div>
 </nav>
