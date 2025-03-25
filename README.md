@@ -29,7 +29,10 @@ php artisan db:seed
 - Composer
 - MySQL 
 
-## Setup
+## Setup Guide 
+
+### Note : Ignore the "1. Clone the repository" if you setting up manually 
+
 
 ### 1. Clone the repository
 
