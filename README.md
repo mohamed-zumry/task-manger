@@ -6,6 +6,12 @@ This project is a simple POC built with **Laravel** as the backend service and *
 
 The project follows the **SOLID principles** for the backend, particularly ensuring **single responsibility** in controllers. A **Task Service** is implemented to maintain the single responsibility principle and ensure scalability for future growth.
 
+## Important Note
+Make sure to run the seeder command in order to populate dummy data and test the POC
+```bash
+php artisan db:seed
+```
+
 ### Implemented Features:
 - **Display Task List**: View tasks with their priorities.
 - **Project Dropdown**: Select a project to filter tasks.
